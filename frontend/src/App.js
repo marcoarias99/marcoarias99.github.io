@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    // Redirect to the static portfolio
+    window.location.href = '/portfolio.html';
+  }, []);
+
   return (
-    <div>
-      <iframe 
-        src="/portfolio.html" 
-        width="100%" 
-        height="100%" 
-        style={{
-          border: 'none',
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh'
-        }}
-        title="Marco Arias Portfolio"
-      />
+    <div style={{ 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      height: '100vh',
+      fontFamily: 'Arial, sans-serif'
+    }}>
+      <h2>Loading Marco's Portfolio...</h2>
     </div>
   );
 }
