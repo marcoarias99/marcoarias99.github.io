@@ -36,7 +36,7 @@ function App() {
   );
 }
 
-const portfolioHTML = \`
+const portfolioHTML = `
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
