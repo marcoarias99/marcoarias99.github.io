@@ -1,42 +1,27 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 function App() {
-  useEffect(() => {
-    // Add external stylesheets
-    const fontLink = document.createElement('link');
-    fontLink.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap';
-    fontLink.rel = 'stylesheet';
-    document.head.appendChild(fontLink);
-
-    const iconLink = document.createElement('link');
-    iconLink.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css';
-    iconLink.rel = 'stylesheet';
-    document.head.appendChild(iconLink);
-
-    // Add the portfolio styles
-    const style = document.createElement('style');
-    style.textContent = portfolioStyles;
-    document.head.appendChild(style);
-
-    // Add the portfolio JavaScript
-    const script = document.createElement('script');
-    script.textContent = portfolioScript;
-    document.body.appendChild(script);
-
-    return () => {
-      document.head.removeChild(fontLink);
-      document.head.removeChild(iconLink);
-      document.head.removeChild(style);
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
-    <div dangerouslySetInnerHTML={{ __html: portfolioHTML }} />
+    <div>
+      <iframe 
+        src="/portfolio.html" 
+        width="100%" 
+        height="100%" 
+        style={{
+          border: 'none',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh'
+        }}
+        title="Marco Arias Portfolio"
+      />
+    </div>
   );
 }
 
-const portfolioHTML = `
+export default App;
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
