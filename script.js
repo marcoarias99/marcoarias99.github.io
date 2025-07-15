@@ -84,12 +84,47 @@ window.addEventListener('scroll', () => {
 // Add scroll effect to navbar
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-    } else {
-        navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+    if (navbar) {
+        if (window.scrollY > 50) {
+            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+        } else {
+            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+        }
     }
 });
+
+// Project expand/collapse functionality
+function toggleProject(button) {
+    const projectCard = button.closest('.project-card');
+    const expandedContent = projectCard.querySelector('.project-expanded-content');
+    const expandBtn = projectCard.querySelector('.project-expand-btn');
+    
+    if (expandedContent.style.display === 'none' || expandedContent.style.display === '') {
+        // Expand the project
+        expandedContent.style.display = 'block';
+        expandBtn.style.display = 'none';
+        
+        // Smooth scroll to the expanded content
+        setTimeout(() => {
+            expandedContent.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        }, 100);
+    } else {
+        // Collapse the project
+        expandedContent.style.display = 'none';
+        expandBtn.style.display = 'inline-block';
+        
+        // Smooth scroll back to the project card
+        setTimeout(() => {
+            projectCard.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest'
+            });
+        }, 100);
+    }
+}
 
 // Animate elements on scroll
 const observerOptions = {
@@ -108,7 +143,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.project-card, .certificate-card, .timeline-item');
+    const animatedElements = document.querySelectorAll('.project-card, .certificate-card, .volunteer-card, .timeline-item');
     
     animatedElements.forEach(el => {
         el.style.opacity = '0';
