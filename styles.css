@@ -881,6 +881,14 @@ body {
         grid-template-columns: 1fr;
     }
     
+    .reflection-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .volunteering-grid {
+        grid-template-columns: 1fr;
+    }
+    
     .timeline::before {
         left: 20px;
     }
