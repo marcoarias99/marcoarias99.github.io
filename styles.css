@@ -757,6 +757,11 @@ body {
         font-size: 2rem;
     }
     
+    .profile-image img {
+        width: 200px;
+        height: 200px;
+    }
+
     .profile-placeholder {
         width: 200px;
         height: 200px;
