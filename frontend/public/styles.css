@@ -400,6 +400,120 @@ body {
     color: #1d4ed8;
 }
 
+.project-expand-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.project-expand-btn:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+.project-expanded-content {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.project-section {
+    margin-bottom: 2rem;
+}
+
+.project-section h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.project-section p {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.reflection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.reflection-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+.reflection-item h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.reflection-item ul {
+    list-style: none;
+    padding: 0;
+}
+
+.reflection-item li {
+    padding: 0.5rem 0;
+    color: #4b5563;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.reflection-item li::before {
+    content: '•';
+    color: #2563eb;
+    position: absolute;
+    left: 0;
+}
+
+.project-screenshot-placeholder {
+    background: #f1f5f9;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 3rem;
+    text-align: center;
+    color: #64748b;
+}
+
+.project-screenshot-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.project-collapse {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.project-collapse-btn {
+    background: #6b7280;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.project-collapse-btn:hover {
+    background: #4b5563;
+}
+
 /* Experience Section */
 .experience {
     padding: 80px 0;
@@ -568,6 +682,63 @@ body {
     font-weight: 500;
 }
 
+/* Volunteering Section */
+.volunteering {
+    padding: 80px 0;
+    background: #f9fafb;
+}
+
+.volunteering-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.volunteer-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.volunteer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.volunteer-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.volunteer-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.volunteer-organization {
+    color: #10b981;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.volunteer-card p {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
 /* Contact Section */
 .contact {
     padding: 80px 0;
@@ -707,6 +878,14 @@ body {
     }
     
     .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .reflection-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .volunteering-grid {
         grid-template-columns: 1fr;
     }
     
