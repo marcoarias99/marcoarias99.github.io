@@ -937,6 +937,11 @@ body {
         grid-template-columns: 1fr;
     }
     
+    .expanded-project-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
     .reflection-grid {
         grid-template-columns: 1fr;
     }
