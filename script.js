@@ -105,14 +105,19 @@ const projectData = {
   1: {
     title: "Exercise Application",
     company: "Personal Project",
-    skills: ["Swift UI", "iOS Development", "Mobile App"],
+    skills: [
+      "Swift UI",
+      "iOS Development",
+      "Mobile App",
+      "Test Cases Development",
+    ],
     image: "https://images.pexels.com/photos/6612388/pexels-photo-6612388.jpeg",
     projectImages: [
       "images/exercise-application/screenshot1.png",
       "images/exercise-application/screenshot2.png",
     ],
     description:
-      "Developed a comprehensive exercise tracking application using Swift UI. The app features workout planning, progress tracking, and exercise logging capabilities. Built with modern iOS development practices and intuitive user interface design.",
+      "Driven by curiosity and a desire to build something personally useful, I developed a comprehensive exercise tracking app using SwiftUI. The app includes workout planning, progress tracking, and exercise logging, and was built using modern iOS development practices with an intuitive, user-focused design",
     purpose:
       "This personal project aimed to create a simple yet effective fitness app that would allow users to log and organize their custom workouts by day. The goal was to design an application I would personally use, while learning SwiftUI, interface layout planning, and app structure from the ground up.",
     workedWell: [
@@ -138,7 +143,12 @@ const projectData = {
   2: {
     title: "System Integration for US Acquisition",
     company: "Gibson Energy",
-    skills: ["System Integration", "Business Analysis", "API Integration"],
+    skills: [
+      "System Integration",
+      "Business Analysis",
+      "Data Migration",
+      "System Testing",
+    ],
     image: "https://images.unsplash.com/photo-1664526937033-fe2c11f1be25",
     description:
       "Led a comprehensive system integration project during my tenure as Business System Analyst at an energy company. The project involved connecting multiple enterprise systems to streamline data flow and improve operational efficiency across departments.",
@@ -164,10 +174,17 @@ const projectData = {
   3: {
     title: "System Automation & Data Processing",
     company: "Gibson Energy",
-    skills: ["Python", "VBA", "Excel Automation", "Data Processing"],
+    skills: [
+      "Python",
+      "VBA",
+      "Excel Automation",
+      "Data Processing",
+      "Data Cleaning",
+      "Spreadsheet Management",
+    ],
     image: "https://images.unsplash.com/photo-1649180556628-9ba704115795",
     description:
-      "Developed automated solutions for data processing and worksheet management. Created Python scripts and VBA macros to automatically clean and process Excel worksheets, reducing manual work by 80% and improving data accuracy across the organization.",
+      "Developed automated solutions for data processing and worksheet management using Python and VBA. Strengthened and applied advanced Excel skills to build tools that cleaned and processed spreadsheets automatically, reducing manual work by 80% and improving data accuracy across the organization.",
     purpose:
       "The automation project was created to reduce manual effort in spreadsheet validation and processing. Weekly reports relied on multiple Excel files, and inconsistencies led to delays and errors. I built automation scripts to scan, clean, and validate these spreadsheets using Python and VBA, freeing up hours of manual work and increasing reporting accuracy.",
     workedWell: [
