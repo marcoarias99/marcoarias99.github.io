@@ -29,7 +29,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Contact Form Handler
+// Contact Form Handler with Formspree
 document
   .getElementById("contact-form")
   .addEventListener("submit", function (e) {
@@ -44,23 +44,81 @@ document
 
     // Simple validation
     if (!name || !email || !subject || !message) {
-      alert("Please fill in all fields");
+      showFormMessage("Please fill in all fields", "error");
       return;
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      alert("Please enter a valid email address");
+      showFormMessage("Please enter a valid email address", "error");
       return;
     }
 
-    // Show success message (In a real application, you would send this to a server)
-    alert("Thank you for your message! I will get back to you soon.");
+    // Show loading state
+    const submitButton = this.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    submitButton.textContent = "Sending...";
+    submitButton.disabled = true;
 
-    // Reset form
-    this.reset();
+    // Submit to Formspree
+    fetch(this.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          showFormMessage(
+            "Thank you! Your message has been sent successfully.",
+            "success"
+          );
+          this.reset();
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      })
+      .catch((error) => {
+        showFormMessage(
+          "Sorry, there was an error sending your message. Please try again.",
+          "error"
+        );
+      })
+      .finally(() => {
+        // Reset button state
+        submitButton.textContent = originalText;
+        submitButton.disabled = false;
+      });
   });
+
+// Show form feedback messages
+function showFormMessage(message, type) {
+  // Remove existing messages
+  const existingMessage = document.querySelector(".form-message");
+  if (existingMessage) {
+    existingMessage.remove();
+  }
+
+  // Create new message element
+  const messageElement = document.createElement("div");
+  messageElement.className = `form-message form-message-${type}`;
+  messageElement.textContent = message;
+
+  // Insert message before the form
+  const form = document.getElementById("contact-form");
+  form.parentNode.insertBefore(messageElement, form);
+
+  // Auto-remove success messages after 5 seconds
+  if (type === "success") {
+    setTimeout(() => {
+      if (messageElement.parentNode) {
+        messageElement.remove();
+      }
+    }, 5000);
+  }
+}
 
 // Add active class to navigation links based on scroll position
 window.addEventListener("scroll", () => {
@@ -100,302 +158,6 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Consolidated Project Data - All project information in one place
-const projectData = {
-  1: {
-    title: "Exercise Application",
-    company: "Personal Project",
-    skills: [
-      "Swift UI",
-      "iOS Development",
-      "Mobile App",
-      "Test Cases Development",
-    ],
-    image: "https://images.pexels.com/photos/6612388/pexels-photo-6612388.jpeg",
-    projectImages: [
-      "images/exercise-application/screenshot1.png",
-      "images/exercise-application/screenshot2.png",
-    ],
-    description:
-      "Driven by curiosity and a desire to build something personally useful, I developed a comprehensive exercise tracking app using SwiftUI. The app includes workout planning, progress tracking, and exercise logging, and was built using modern iOS development practices with an intuitive, user-focused design",
-    purpose:
-      "This personal project aimed to create a simple yet effective fitness app that would allow users to log and organize their custom workouts by day. The goal was to design an application I would personally use, while learning SwiftUI, interface layout planning, and app structure from the ground up.",
-    workedWell: [
-      "Developed clean and functional SwiftUI views for a smooth user experience",
-      "Gained a strong foundation in Swift and mobile app logic within weeks",
-      "Successfully implemented features like custom workouts and day-based logging",
-    ],
-    couldImprove: [
-      "Early designs changed multiple times to include too many features at once",
-      "Could benefit from better planning around state management",
-      "More advanced analytics and insights",
-      "Cross-platform compatibility",
-    ],
-    learnings: [
-      "How to build and test SwiftUI views using custom wireframes",
-      "Mobile app user experience design principles",
-      "Importance of focusing on core features before expanding",
-      "How to structure test cases and plan for scalable app growth",
-    ],
-    placeholderIcon: "fas fa-image",
-    placeholderText: "Screenshot placeholder",
-  },
-  2: {
-    title: "System Integration for US Acquisition",
-    company: "Gibson Energy",
-    skills: [
-      "System Integration",
-      "Business Analysis",
-      "Data Migration",
-      "System Testing",
-    ],
-    image: "https://images.unsplash.com/photo-1664526937033-fe2c11f1be25",
-    description:
-      "Led a comprehensive system integration project during my tenure as Business System Analyst at an energy company. The project involved connecting multiple enterprise systems to streamline data flow and improve operational efficiency across departments.",
-    purpose:
-      "This project focused on integrating large volumes of operational and master data from a recently acquired U.S. terminal into the existing systems. The goal was to ensure data accuracy, maintain operational continuity, and reduce risk during the transition by validating records, troubleshooting upload issues, and preparing test environments for deployment.",
-    workedWell: [
-      "Use of test environments to catch errors before main system deployment",
-      "Data cleanup processes that prevented system inconsistencies",
-      "Reuse of automation tools from earlier projects to streamline validation",
-    ],
-    couldImprove: [
-      "Earlier planning around data limitations of the existing system",
-      "Increased visibility of progress for external stakeholders",
-    ],
-    learnings: [
-      "System limitations and how to navigate legacy data constraints",
-      "Importance of proactive testing and stakeholder feedback loops",
-      "How to adapt validation scripts for evolving use cases",
-    ],
-    placeholderIcon: "fas fa-project-diagram",
-    placeholderText: "System architecture diagram placeholder",
-  },
-  3: {
-    title: "System Automation & Data Processing",
-    company: "Gibson Energy",
-    skills: [
-      "Python",
-      "VBA",
-      "Excel Automation",
-      "Data Processing",
-      "Data Cleaning",
-      "Spreadsheet Management",
-    ],
-    image: "https://images.unsplash.com/photo-1649180556628-9ba704115795",
-    description:
-      "Developed automated solutions for data processing and worksheet management using Python and VBA. Strengthened and applied advanced Excel skills to build tools that cleaned and processed spreadsheets automatically, reducing manual work by 80% and improving data accuracy across the organization.",
-    purpose:
-      "The automation project was created to reduce manual effort in spreadsheet validation and processing. Weekly reports relied on multiple Excel files, and inconsistencies led to delays and errors. I built automation scripts to scan, clean, and validate these spreadsheets using Python and VBA, freeing up hours of manual work and increasing reporting accuracy.",
-    workedWell: [
-      "Significant time savings (80% reduction in manual work)",
-      "Significantly improved accuracy in reporting data",
-      "Tools were simple enough for non-technical team members to use",
-      "The solution scaled easily across different spreadsheet formats",
-    ],
-    couldImprove: [
-      "Initial scripts were slower due to large datasets",
-      "Integration with cloud-based solutions",
-      "Real-time processing capabilities",
-      "Advanced reporting and analytics features",
-    ],
-    learnings: [
-      "Advanced Python scripting and automation",
-      "VBA macro development and optimization",
-      "Data cleaning and processing techniques",
-      "User adoption and change management",
-    ],
-    placeholderIcon: "fas fa-code",
-    placeholderText: "Code snippet placeholder",
-  },
-};
-
-// Generate project cards dynamically
-function generateProjectCards() {
-  const projectsGrid = document.getElementById("projectsGrid");
-  projectsGrid.innerHTML = "";
-
-  Object.keys(projectData).forEach((projectId) => {
-    const project = projectData[projectId];
-
-    const projectCard = document.createElement("div");
-    projectCard.className = "project-card";
-    projectCard.setAttribute("data-project", projectId);
-
-    projectCard.innerHTML = `
-      <div class="project-image">
-        <img src="${project.image}" alt="${project.title}" />
-      </div>
-      <div class="project-content">
-        <h3>${project.title}</h3>
-        <div class="project-company">${project.company}</div>
-        <div class="project-skills">
-          ${project.skills
-            .map((skill) => `<span class="skill-tag">${skill}</span>`)
-            .join("")}
-        </div>
-        <p>${project.description}</p>
-      </div>
-      <div class="project-expand-indicator">
-        <i class="fas fa-chevron-down"></i>
-      </div>
-    `;
-
-    // Add click event listener for expand/collapse
-    projectCard.addEventListener("click", () => {
-      expandProject(projectId);
-    });
-
-    projectsGrid.appendChild(projectCard);
-  });
-}
-
-// Project expand/collapse functionality
-let currentExpandedProject = null;
-
-function expandProject(projectId) {
-  const expandedArea = document.getElementById("expandedProjectArea");
-  const project = projectData[projectId];
-
-  // If the same project is already expanded, collapse it
-  if (currentExpandedProject === projectId) {
-    collapseProject();
-    return;
-  }
-
-  // If another project is expanded, collapse it first
-  if (currentExpandedProject) {
-    collapseProject();
-  }
-
-  // Show the expanded area
-  expandedArea.style.display = "block";
-
-  // Update expand indicators
-  document
-    .querySelectorAll(".project-expand-indicator")
-    .forEach((indicator) => {
-      indicator.innerHTML = '<i class="fas fa-chevron-down"></i>';
-    });
-
-  // Update the clicked project's indicator
-  const clickedCard = document.querySelector(`[data-project="${projectId}"]`);
-  if (clickedCard) {
-    const indicator = clickedCard.querySelector(".project-expand-indicator");
-    indicator.innerHTML = '<i class="fas fa-chevron-up"></i>';
-  }
-
-  // Create the expanded content
-  const expandedContent = `
-    <div class="expanded-project-main">
-      <div class="project-image" style="height: 200px; margin-bottom: 1rem;">
-        <img src="${project.image}" alt="${
-    project.title
-  }" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-      </div>
-      <h3>${project.title}</h3>
-      <div class="project-company">${project.company}</div>
-      <div class="project-skills">
-        ${project.skills
-          .map((skill) => `<span class="skill-tag">${skill}</span>`)
-          .join("")}
-      </div>
-      <p>${project.description}</p>
-    </div>
-    
-    <div class="expanded-project-details">
-      <div class="expanded-project-section">
-        <h4>Project Purpose</h4>
-        <p>${project.purpose}</p>
-      </div>
-      
-      <div class="expanded-project-section">
-        <h4>Self-Reflection</h4>
-        <div class="reflection-grid">
-          <div class="reflection-item">
-            <h5>What Worked Well</h5>
-            <ul>
-              ${project.workedWell.map((item) => `<li>${item}</li>`).join("")}
-            </ul>
-          </div>
-          <div class="reflection-item">
-            <h5>What Could Be Improved</h5>
-            <ul>
-              ${project.couldImprove.map((item) => `<li>${item}</li>`).join("")}
-            </ul>
-          </div>
-          <div class="reflection-item">
-            <h5>Key Learnings</h5>
-            <ul>
-              ${project.learnings.map((item) => `<li>${item}</li>`).join("")}
-            </ul>
-          </div>
-        </div>
-      </div>
-      
-      <div class="expanded-project-section">
-        <h4>Project Screenshots</h4>
-        ${
-          project.projectImages
-            ? `<div class="project-screenshots">
-            ${project.projectImages
-              .map(
-                (img) =>
-                  `<div class="project-screenshot">
-                <img src="${img}" alt="${project.title} Screenshot" style="width: 100%; height: auto; border-radius: 8px; margin-bottom: 1rem;">
-              </div>`
-              )
-              .join("")}
-          </div>`
-            : `<div class="project-screenshot-placeholder">
-            <i class="${project.placeholderIcon}"></i>
-            <p>${project.placeholderText}</p>
-          </div>`
-        }
-      </div>
-      
-      <div class="project-collapse">
-        <button class="project-collapse-btn" onclick="collapseProject()">Show Less</button>
-      </div>
-    </div>
-  `;
-
-  expandedArea.querySelector(".expanded-project-content").innerHTML =
-    expandedContent;
-  currentExpandedProject = projectId;
-
-  // Smooth scroll to the expanded content
-  setTimeout(() => {
-    expandedArea.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }, 100);
-}
-
-function collapseProject() {
-  const expandedArea = document.getElementById("expandedProjectArea");
-
-  // Hide the expanded area
-  expandedArea.style.display = "none";
-  currentExpandedProject = null;
-
-  // Reset all expand indicators
-  document
-    .querySelectorAll(".project-expand-indicator")
-    .forEach((indicator) => {
-      indicator.innerHTML = '<i class="fas fa-chevron-down"></i>';
-    });
-
-  // Smooth scroll back to the projects section
-  setTimeout(() => {
-    document.getElementById("projects").scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }, 100);
-}
-
 // Animate elements on scroll
 const observerOptions = {
   threshold: 0.1,
@@ -413,9 +175,6 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener("DOMContentLoaded", () => {
-  // Generate project cards first
-  generateProjectCards();
-
   const animatedElements = document.querySelectorAll(
     ".project-card, .certificate-card, .volunteer-card, .timeline-item"
   );
@@ -446,4 +205,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(typeWriter, 1000);
   }
+});
+
+// Back to Top Button and Scroll Progress Indicator
+document.addEventListener("DOMContentLoaded", () => {
+  const backToTopButton = document.getElementById("backToTop");
+  const scrollProgressBar = document.querySelector(".scroll-progress-bar");
+
+  // Show/hide back to top button and update progress bar on scroll
+  window.addEventListener("scroll", () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
+
+    // Show back to top button after scrolling 300px
+    if (scrollTop > 300) {
+      backToTopButton.classList.add("visible");
+    } else {
+      backToTopButton.classList.remove("visible");
+    }
+
+    // Update scroll progress bar
+    const scrollPercentage = (scrollTop / scrollHeight) * 100;
+    scrollProgressBar.style.width = `${scrollPercentage}%`;
+  });
+
+  // Back to top button click handler
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
 });
