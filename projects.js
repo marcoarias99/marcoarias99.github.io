@@ -165,7 +165,7 @@ const projectData = {
       "Comprehensive data analytics project analyzing bike-share usage patterns to understand differences between casual riders and annual members. Completed as part of the Google Data Analytics Professional Certificate program, utilizing real-world data to provide actionable business insights.",
     hasNotebook: true,
     notebookUrl: "https://www.kaggle.com/code/marcoariasb/cyclistic-case-study",
-    // hasTableau: true,
+    hasTableau: true,
     dashboardUrl:
       "https://public.tableau.com/views/Cyclistic_17531706788100/CyclisticMembershipsDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
     // Enhanced STAR Format Implementation
