@@ -4,8 +4,16 @@ const projectData = {
     title: "Exercise Application",
     company: "Personal Project",
     status: "Complete",
-    skills: ["Swift UI", "iOS Development", "Mobile App"],
-    tools: ["SwiftUI", "Xcode", "Figma", "Wireframing Tools"],
+    skills: [
+      "Swift UI",
+      "iOS Development",
+      "Mobile App",
+      "JSON",
+      "Testing",
+      "Debugging",
+      "Data Handling",
+    ],
+    tools: ["SwiftUI", "Xcode", "Figma", "Wireframing Tools", "JSON"],
     image: "images/exercise-application/exercise-app.gif",
     projectImages: [
       "images/exercise-application/main.png",
@@ -42,47 +50,66 @@ const projectData = {
     title: "System Integration for US Acquisition",
     company: "Gibson Energy",
     status: "Complete",
-    skills: ["System Integration", "Business Analysis", "API Integration"],
+    skills: [
+      "SOX Compliance",
+      "Test Cases",
+      "Documentation",
+      "Automation",
+      "System Backups",
+      "Data Migration",
+    ],
     tools: [
       "Excel",
+      "Python",
       "Power BI",
-      "Virtual Machines",
-      "Synthesis System",
-      "Validation Scripts",
+      "VBA Macros",
+      "VirtualBox",
+      "Synthesis",
+      "Sharepoint",
+      "Visio",
     ],
-    image: "https://images.unsplash.com/photo-1664526937033-fe2c11f1be25",
+    image: "https://www.gibsonenergy.com/wp-content/uploads/2023/08/image3.png",
     description:
-      "Led a comprehensive system integration project during my tenure as Business System Analyst at an energy company. The project involved connecting multiple enterprise systems to streamline data flow and improve operational efficiency across departments.",
-    // Enhanced STAR Format Implementation
+      "Supported the successful integration of a newly acquired U.S. terminal into Gibson Energy's internal system (Synthesis). Focused on migrating master data, coordinating test environments, and validating data integrity while ensuring compliance with SOX regulations and system limitations. Contributed to system testing, technical documentation, and cross-team collaboration with internal and external stakeholders.",
+    // STAR Format Implementation
     situation:
-      "Gibson Energy acquired a U.S. company, requiring integration of all relevant data from the newly acquired US company into our existing system, Synthesis, while preventing disruptions in production.",
-    task: "Migrate all relevant data accurately into a test environment, perform quality checks, coordinate SOX compliance tasks, and ensure all users had appropriate access permissions while meeting internal control requirements.",
+      "Gibson Energy acquired a U.S. terminal, requiring the integration of operational data into the existing Synthesis system while avoiding disruptions to production. This effort involved cross-functional planning, data validation, and adaptation to technical limitations in the company's existing infrastructure.",
+    task: "Accurately migrate all relevant data into a test environment, validate system integrity, coordinate SOX compliance tasks, and ensure appropriate user access permissions—while meeting internal control and audit requirements.",
     action: [
-      "Used Excel, Power BI, virtual machines, and the Synthesis system to support the migration process",
-      "Performed comprehensive quality checks and uploaded test data to validate system integrity",
+      "Used Excel, Power BI, VirtualBox, and the Synthesis system to support the data migration process",
+      "Performed comprehensive quality checks and uploaded test data to validate system behavior",
       "Developed validation scripts based on prior automation work to ensure data accuracy before and after migration",
-      "Created detailed technical documentation outlining steps and validations required throughout testing",
+      "Created detailed technical documentation outlining testing steps, validations, and migration procedures",
       "Collaborated with the acquired team to develop feasible workarounds for system limitations",
-      "Coordinated SOX compliance tasks and verified appropriate user access permissions were in place",
-      "Helped create system backups and established post-integration reference processes",
+      "Coordinated SOX compliance tasks and verified correct user access permissions",
+      "Assisted in creating system backups and contributed to the design of post-integration reference materials",
     ],
     result: [
-      "Successfully migrated all necessary data despite system limitations without production disruptions",
-      "Established reusable documentation and processes that serve as reference for future integrations",
-      "Ensured full regulatory compliance with SOX requirements and internal control standards",
-      "Strengthened skills in system testing, stakeholder coordination, and regulatory compliance",
-      "Created validated data handling procedures that met all internal control requirements",
+      "Successfully migrated over 90% of required data despite system limitations and without production disruptions",
+      "Created reusable documentation and processes for future integrations",
+      "Maintained full SOX compliance and internal control standards across systems",
+      "Strengthened team capabilities in system testing, regulatory compliance, and stakeholder coordination",
+      "Established validated data handling procedures aligned with internal audit requirements",
     ],
     challenges:
-      "A major challenge was migrating all necessary data despite system limitations, which we resolved by collaborating with the acquired team on feasible workarounds.",
-    placeholderIcon: "fas fa-project-diagram",
-    placeholderText: "System architecture diagram placeholder",
+      "A major challenge was integrating all necessary data despite technical limitations in Synthesis. This was resolved by collaborating with the acquired team to design workaround procedures and adjusting the data structure where needed.",
+    hideScreenshots: true,
+    placeholderIcon: "fas fa-cogs",
+    placeholderText: "System Integration Diagram",
   },
   3: {
     title: "System Automation & Data Processing",
     company: "Gibson Energy",
     status: "Complete",
-    skills: ["Python", "VBA", "Excel Automation", "Data Processing"],
+    skills: [
+      "Python",
+      "VBA",
+      "Automation",
+      "Data Processing",
+      "Testing & Deployment",
+      "Excel",
+      "Report Comparison",
+    ],
     tools: ["VBA Macros", "Excel", "Python", "Power BI", "Validation Scripts"],
     image: "images/system-automation/automation.gif",
     projectImages: ["images/system-automation/automation.gif"],
@@ -116,7 +143,15 @@ const projectData = {
     title: "Cyclistic Case Study",
     company: "Google Data Analytics Capstone",
     status: "Complete",
-    skills: ["SQL", "BigQuery", "Data Cleaning", "Tableau"],
+    skills: [
+      "SQL",
+      "BigQuery",
+      "Data Cleaning",
+      "Tableau",
+      "Dashboard Design",
+      "Data Analysis",
+      "Data Visualization",
+    ],
     tools: [
       "BigQuery (SQL)",
       "Google Cloud Storage",
@@ -130,8 +165,29 @@ const projectData = {
       "Comprehensive data analytics project analyzing bike-share usage patterns to understand differences between casual riders and annual members. Completed as part of the Google Data Analytics Professional Certificate program, utilizing real-world data to provide actionable business insights.",
     hasNotebook: true,
     notebookUrl: "https://www.kaggle.com/code/marcoariasb/cyclistic-case-study",
-    hasTableau: true,
+    // hasTableau: true,
+    dashboardUrl:
+      "https://public.tableau.com/views/Cyclistic_17531706788100/CyclisticMembershipsDashboard?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
     // Enhanced STAR Format Implementation
+    embedHtml: `
+      <div class="tableauPlaceholder" id="vizCyclistic" style="width: 100%; height: 800px; margin-top: 20px;">
+        <object class="tableauViz" width="100%" height="100%">
+          <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+          <param name="embed_code_version" value="3" />
+          <param name="site_root" value="" />
+          <param name="name" value="Cyclistic_17531706788100/CyclisticMembershipsDashboard" />
+          <param name="tabs" value="no" />
+          <param name="toolbar" value="yes" />
+          <param name="animate_transition" value="yes" />
+          <param name="display_static_image" value="yes" />
+          <param name="display_spinner" value="yes" />
+          <param name="display_overlay" value="yes" />
+          <param name="display_count" value="yes" />
+          <param name="language" value="en-US" />
+        </object>
+      </div>
+      <script src="https://public.tableau.com/javascripts/api/viz_v1.js"></script>
+`,
     situation:
       "This project was the capstone for the Google Data Analytics Certificate, where Cyclistic (a fictional bike-share company) needed to understand user behavior differences between casual riders and annual members.",
     task: "Analyze ride data to answer how casual and annual members use Cyclistic's bikes differently, and how to encourage more conversions to annual memberships. The goal was to deliver a complete analysis with actionable business recommendations.",
@@ -152,8 +208,8 @@ const projectData = {
     ],
     challenges:
       "Some obstacles included setting up the environment to handle large datasets and finding cost-effective ways to process and store them within the limitations of a free environment.",
-    placeholderIcon: "fas fa-chart-line",
-    placeholderText: "Tableau dashboard will be embedded here",
+    // placeholderIcon: "fas fa-chart-line",
+    // placeholderText: "Tableau dashboard",
   },
 };
 
@@ -196,6 +252,16 @@ function generateProjectCards() {
           </div>`
             : ""
         }
+        ${
+          project.dashboardUrl
+            ? `<div class="project-dashboard-btn">
+            <a href="${project.dashboardUrl}" target="_blank" rel="noopener noreferrer" class="view-dashboard-btn">
+              <i class="fas fa-chart-bar"></i>
+              <span>View Dashboard</span>
+            </a>
+          </div>`
+            : ""
+        }
       </div>
       <div class="project-expand-indicator">
         <i class="fas fa-chevron-down"></i>
@@ -204,8 +270,11 @@ function generateProjectCards() {
 
     // Add click event listener for expand/collapse
     projectCard.addEventListener("click", (e) => {
-      // Don't expand if clicking on the notebook button
-      if (!e.target.closest(".view-notebook-btn")) {
+      // Don't expand if clicking on the notebook or dashboard button
+      if (
+        !e.target.closest(".view-notebook-btn") &&
+        !e.target.closest(".view-dashboard-btn")
+      ) {
         expandProject(projectId);
       }
     });
@@ -276,6 +345,16 @@ function expandProject(projectId) {
           </div>`
             : ""
         }
+        ${
+          project.dashboardUrl
+            ? `<div class="expanded-dashboard-btn">
+            <a href="${project.dashboardUrl}" target="_blank" rel="noopener noreferrer" class="view-dashboard-btn">
+              <i class="fas fa-chart-bar"></i>
+              <span>View Dashboard</span>
+            </a>
+          </div>`
+            : ""
+        }
       </div>
       
       <div class="expanded-project-section tools-section">
@@ -323,7 +402,10 @@ function expandProject(projectId) {
         </div>
       </div>
       
-      <div class="expanded-project-section">
+      ${
+        project.hideScreenshots
+          ? ""
+          : `<div class="expanded-project-section">
         <h4>${
           project.hasTableau ? "Interactive Dashboard" : "Project Screenshots"
         }</h4>
@@ -383,7 +465,8 @@ function expandProject(projectId) {
               <p>${project.placeholderText}</p>
             </div>`
         }
-      </div>
+      </div>`
+      }
       
       <div class="project-collapse">
         <button class="project-collapse-btn" onclick="collapseProject()">Show Less</button>
